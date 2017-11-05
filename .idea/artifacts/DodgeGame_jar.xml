@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DodgeGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DodgeGame_jar</output-path>
+    <root id="archive" name="DodgeGame.jar">
+      <element id="module-output" name="DodgeGame" />
+    </root>
+  </artifact>
+</component>
