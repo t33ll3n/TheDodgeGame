@@ -20,6 +20,7 @@ public class Game extends Canvas implements Runnable{
     private Spawner spawner;
     private Menu menu;
     private Sound sound;
+    private static Texture tex;
 
     public enum STATE {
         Menu,
@@ -36,6 +37,7 @@ public class Game extends Canvas implements Runnable{
         sound = new Sound();
         handler = new Handler();
         hud = new HUD();
+        tex = new Texture();
         this.addKeyListener(new KeyInput(handler, this));
         menu = new Menu(this, handler, hud);
         this.addMouseListener(menu);
@@ -139,6 +141,10 @@ public class Game extends Canvas implements Runnable{
         } else {
             return var;
         }
+    }
+
+    public static Texture getInstance(){
+        return tex;
     }
 
     public static void main(String[] args){
