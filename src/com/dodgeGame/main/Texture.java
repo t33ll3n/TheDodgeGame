@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public class Texture {
 
     SpriteSheet ss;
-    public BufferedImage[] item = new BufferedImage[1];
+    public BufferedImage[] item = new BufferedImage[17];
     private BufferedImage item_sheet;
 
 
@@ -24,8 +24,11 @@ public class Texture {
     }
 
     private void getTexture(){
-        item[0] = ss.grabImage(1, 1, 16, 16);
-        System.out.println("inTexture" + item[0]);
+        //item[0] = ss.grabImage(1, 1, 16, 16);
+        //Loader images for coin animation
+        for (int i = 1; i <= 17; i++){
+            item[i-1] = ss.grabImage(i, 1, 16, 16);
+        }
     }
 
 }
