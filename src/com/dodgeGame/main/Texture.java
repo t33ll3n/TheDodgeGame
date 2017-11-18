@@ -13,9 +13,10 @@ public class Texture {
 
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
-            item_sheet = loader.loadImage("item_sheet.png");
+            item_sheet = loader.loadImage("\\sprites\\item_sheet.png");
         } catch (Exception e){
             e.printStackTrace();
+            //System.out.println(e.getMessage());
         }
 
         ss = new SpriteSheet(item_sheet);

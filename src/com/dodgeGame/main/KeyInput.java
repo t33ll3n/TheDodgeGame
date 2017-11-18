@@ -11,11 +11,14 @@ public class KeyInput extends KeyAdapter {
 
     private Handler handler;
     private Game game;
+    private HUD hud;
     private boolean[] keyDown = new boolean[4]; //boolean array prevents sticky keys
 
-    public KeyInput(Handler handler, Game game){
+    public KeyInput(Handler handler, Game game, HUD hud){
         this.handler = handler;
         this.game = game;
+        this.hud = hud;
+
         for (int i = 0; i < keyDown.length; i++){
             keyDown[i] = false;
         }
@@ -36,7 +39,11 @@ public class KeyInput extends KeyAdapter {
                 if(key == KeyEvent.VK_D) { tmpObject.setVelX(5); keyDown[3] = true; }
 
                 else if (key == KeyEvent.VK_E){
-                    handler.addObject(new Bomb(tmpObject.getX() + 8, tmpObject.getY() + 8, ID.Bomb, handler));
+                    if (hud.getBombs() >= 1) {
+                        hud.setBombs(hud.getBombs() - 1);
+                        handler.addObject(new Bomb(tmpObject.getX() + 8, tmpObject.getY() + 8, ID.Bomb, handler));
+                    }
+                    //System.out.println(hud.getBombs());
                 }
             }
 

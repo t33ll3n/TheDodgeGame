@@ -21,6 +21,7 @@ public class Game extends Canvas implements Runnable{
     private Menu menu;
     private Sound sound;
     private static Texture tex;
+    private static LoadResources resources;
 
     public enum STATE {
         Menu,
@@ -34,11 +35,13 @@ public class Game extends Canvas implements Runnable{
     public static STATE gameState = STATE.Menu;
 
     public Game(){
+        resources = new LoadResources();
+        resources.LoadFonts();
         sound = new Sound();
         handler = new Handler();
         hud = new HUD();
         tex = new Texture();
-        this.addKeyListener(new KeyInput(handler, this));
+        this.addKeyListener(new KeyInput(handler, this, hud));
         menu = new Menu(this, handler, hud);
         this.addMouseListener(menu);
         spawner = new Spawner(handler, hud);
@@ -95,6 +98,7 @@ public class Game extends Canvas implements Runnable{
 
     private void tick(){ //Game ticks
         //what happened every tick in the game
+        //gameState = STATE.Shop;
 
         if (gameState == STATE.Game) {
             handler.tick();

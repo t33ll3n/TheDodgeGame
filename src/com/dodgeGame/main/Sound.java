@@ -23,7 +23,8 @@ public class Sound {
         }
 
         try {
-            URL soundURL = Sound.class.getResource("Voice_Over_Under.wav");
+            //URL soundURL = Sound.class.getResource("Voice_Over_Under.wav");
+            URL soundURL = this.getClass().getResource("Voice_Over_Under.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
             clip.open(audioStream);
         } catch (LineUnavailableException lue) {

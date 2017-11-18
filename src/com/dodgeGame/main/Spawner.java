@@ -28,8 +28,10 @@ public class Spawner {
             SpawnEnemys(hud.getLevel());
             scorePlus = 0;
         }
-        if (scorePlus % 500 == 0){
-            handler.addObject(new Coin(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.Coin, handler));
+
+        //every 500 points new coin appears
+        if (scorePlus % 400 == 0){
+            handler.addObject(new Coin(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.Coin, handler));
         }
     }
 
@@ -39,21 +41,20 @@ public class Spawner {
 
     public void SpawnEnemys(int level){ // adds now enemies to the game, depends of the level
         if (level == 2){
-            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.BasicEnemy, handler));
-            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.BasicEnemy, handler));
+            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
+            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
         } else if (level == 3){
-            handler.addObject(new LifeToken(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.LifeToken, handler));
-            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.BasicEnemy, handler));
-            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.BasicEnemy, handler));
+            handler.addObject(new LifeToken(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.LifeToken, handler));
+            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
+            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
         } else if (level == 4){
-            handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.FastEnemy, handler));
+            handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.FastEnemy, handler));
         } else if (level == 5){
-            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.BasicEnemy, handler));
-            handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 50 ) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.FastEnemy, handler));
-            handler.addObject(new LifeToken(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50) + 50, ID.LifeToken, handler));
+            handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
+            handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 50 ) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.FastEnemy, handler));
+            handler.addObject(new LifeToken(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.LifeToken, handler));
         } else if (level == 6){
-            handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH - 50) + 50, r.nextInt(Game.HEIGHT - 50 ) + 50, ID.SmartEnemy, handler));
-
+            handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50 ) + 25, ID.SmartEnemy, handler));
         }
     }
 }

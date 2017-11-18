@@ -35,8 +35,8 @@ public class Player extends GameObject {
                     //collision code
 
                     //if so, life goes down
-                    HUD.HEALTH -= 2;
-                    if (HUD.HEALTH <= 0){
+                    HUD.health -= 1;
+                    if (HUD.health <= 0){
                         Game.gameState = Game.STATE.End;
                     }
                     time = System.currentTimeMillis();
@@ -50,10 +50,12 @@ public class Player extends GameObject {
             //if the object is LifeToken check for collision
             if (tmpObject.getId() == ID.LifeToken){
                 if (getBounds().intersects(tmpObject.getBounds())){
-                    HUD.HEALTH += 50;
+                    HUD.health += 50;
                     handler.removeObject(tmpObject);
                 }
             }
+
+            //if the object is coin check for collision
             if (tmpObject.getId() == ID.Coin){
                 if (getBounds().intersects(tmpObject.getBounds())){
                     HUD.coins += 1;

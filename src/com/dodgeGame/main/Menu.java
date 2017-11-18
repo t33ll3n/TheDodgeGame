@@ -33,10 +33,10 @@ public class Menu extends MouseAdapter {
                 handler.addObject(new Player(game.WIDTH/2 - 32, game.HEIGHT/2 - 32, ID.Player, handler, color));
                 for (int i = 0; i < 2; i++) {
                     //Add to enemies for the start
-                    handler.addObject(new BasicEnemy(r.nextInt(game.WIDTH), r.nextInt(game.HEIGHT), ID.BasicEnemy, handler));
+                    handler.addObject(new BasicEnemy(r.nextInt(game.WIDTH - 50) + 25, r.nextInt(game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
                 }
                 //Add first coin in the game
-                handler.addObject(new Coin(r.nextInt(game.WIDTH), r.nextInt(game.HEIGHT), ID.Coin, handler));
+                handler.addObject(new Coin(r.nextInt(game.WIDTH - 50) + 25, r.nextInt(game.HEIGHT - 50) + 25, ID.Coin, handler));
 
             } else if(mouseOver(mx, my, 200, 210, 250, 100)){
                 game.gameState = Game.STATE.Options;
@@ -49,12 +49,12 @@ public class Menu extends MouseAdapter {
             if (mouseOver(mx, my, 225, 200, 200, 70)){
                 game.gameState = Game.STATE.Game;
 
-                hud.HEALTH = 100;
+                hud.health = 100;
                 hud.setScore(0);
                 hud.setLevel(1);
                 handler.addObject(new Player(game.WIDTH/2 - 32, game.HEIGHT/2 - 32, ID.Player, handler, color));
                 for (int i = 0; i < 2; i++) {
-                    handler.addObject(new BasicEnemy(r.nextInt(game.WIDTH) - 50, r.nextInt(game.HEIGHT) - 50, ID.BasicEnemy, handler));
+                    handler.addObject(new BasicEnemy(r.nextInt(game.WIDTH - 50) + 25, r.nextInt(game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
                 }
 
             }
@@ -73,6 +73,15 @@ public class Menu extends MouseAdapter {
             } else if (mouseOver(mx, my, 400, 100, 50, 50)){
                 color = Color.white;
                 selectedRect = new Rectangle(390, 90, 70, 70);
+            }
+        } else if (game.gameState == Game.gameState.Shop){
+            //shop mouse and keyboard activities
+            if (mouseOver(mx, my, 60, 150, 300, 40)){
+                if (hud.getCoins() > 5){
+                    hud.setCoins(hud.getCoins() - 5);
+                    hud.setBombs(hud.getBombs() + 1);
+                }
+                //System.out.println("Bombs: " + hud.getBombs());
             }
         }
     }
@@ -97,9 +106,9 @@ public class Menu extends MouseAdapter {
     }
 
     public void render(Graphics g){
-        Font fnt = new Font("arial", 1, 60);
-        Font fntsmall = new Font("arial", 1, 30);
-        g.setFont(fnt);
+        Font fnt = new Font("lilliPut Steps", 1, 60);
+        Font fntsmall = new Font("lilliPut Steps", 1, 30);
+        g.setFont(fntsmall);
         g.setColor(Color.white);
 
         if (game.gameState == Game.STATE.Menu) {
@@ -117,6 +126,7 @@ public class Menu extends MouseAdapter {
             g.drawString("Play", 260, 160);
             g.drawString("Options", 210, 280);
             g.drawString("Quit", 260, 400);
+
         } else if (game.gameState == Game.STATE.End){
             g.setColor(Color.black);
             g.fillRect(0,0, game.getWidth(), game.getHeight());
@@ -133,6 +143,7 @@ public class Menu extends MouseAdapter {
             g.setColor(Color.black);
             g.drawString("Play Again", 239, 250);
             g.drawString("Quit", 290, 350);
+
         } else if (game.gameState == Game.STATE.Options){
             g.setColor(Color.black);
             g.fillRect(0,0, game.getWidth(), game.getHeight());
@@ -151,13 +162,25 @@ public class Menu extends MouseAdapter {
             Graphics2D g2d = (Graphics2D) g;
             g.setColor(Color.white);
             g2d.draw(new Rectangle(selectedRect));
+
         } else if (game.gameState == Game.gameState.Shop){
             g.setColor(Color.black);
+            //Title
             g.fillRect(0,0, game.getWidth(), game.getHeight());
             g.setColor(Color.WHITE);
             g.drawString("Shop", 240, 60);
+            //Coins
             g.setFont(fntsmall);
             g.drawString("Coins: " + HUD.coins , 60, 100);
+            //Bombs
+            g.fillRect(60, 150, 300, 40);
+            g.setColor(Color.black);
+            g.drawString("Bomb - Cost: 5", 80, 180);
+            //Shield
+            g.setColor(Color.white);
+            g.fillRect( 60, 200, 300, 40);
+            g.setColor(Color.black);
+            g.drawString("Shield - Cost: 15", 80, 230);
         }
     }
 
