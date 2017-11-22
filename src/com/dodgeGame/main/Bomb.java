@@ -8,20 +8,26 @@ public class Bomb extends GameObject{
 
     Handler handler;
     boolean explosion = false;
+    Texture tex = Game.getInstance();
+    private Animation bomb;
+
     public Bomb(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
+        bomb = new Animation(10, tex.bomb);
     }
 
     @Override
     public void tick() {
+        bomb.runAnimation();
         collision();
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.gray);
-        g.fillRect(x, y, 16, 16);
+        //g.setColor(Color.gray);
+        //g.fillRect(x, y, 16, 16);
+        bomb.drawAnimation(g, x, y, 16, 16);
     }
 
     @Override

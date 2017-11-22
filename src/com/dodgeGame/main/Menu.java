@@ -76,20 +76,29 @@ public class Menu extends MouseAdapter {
             }
         } else if (game.gameState == Game.gameState.Shop){
             //shop mouse and keyboard activities
-            if (mouseOver(mx, my, 60, 150, 300, 40)){
-                if (hud.getCoins() > 5){
+
+            //mouse over bomb
+            if (mouseOver(mx, my, 60, 150, 410, 40)){
+                if (hud.getCoins() >= 5){
                     hud.setCoins(hud.getCoins() - 5);
                     hud.setBombs(hud.getBombs() + 1);
                 }
                 //System.out.println("Bombs: " + hud.getBombs());
             }
+            //mouse over shield
+            else if (mouseOver(mx, my, 60, 200, 465, 40)){
+                if (hud.getCoins() >= 10) {
+                    hud.setCoins(hud.getCoins() - 10);
+                    hud.setShield(100);
+                }
+            }
         }
     }
 
 
-    private boolean mouseOver(int mx, int my, int x, int y, int width, int heigth){
+    private boolean mouseOver(int mx, int my, int x, int y, int width, int height){
         if (mx > x && mx < x + width){
-            if (my > y && my < y + heigth){
+            if (my > y && my < y + height){
                 return true;
             } else return false;
         } else return false;
@@ -133,16 +142,16 @@ public class Menu extends MouseAdapter {
             g.setColor(Color.white);
             g.drawString("Game Over", 160, 90);
 
-            Font fnt2 = new Font("arial", 1, 35);
+            Font fnt2 = new Font("lilliPut Steps", 1, 35);
             g.setFont(fnt2);
 
             g.drawString("Score: " + hud.getScore(), 165, 150);
-            g.fillRect(225, 200, 200, 70);
+            g.fillRect(185, 200, 285, 70);
             g.fillRect(225, 300, 200, 70);
 
             g.setColor(Color.black);
-            g.drawString("Play Again", 239, 250);
-            g.drawString("Quit", 290, 350);
+            g.drawString("Play Again", 190, 250);
+            g.drawString("Quit", 270, 350);
 
         } else if (game.gameState == Game.STATE.Options){
             g.setColor(Color.black);
@@ -164,23 +173,26 @@ public class Menu extends MouseAdapter {
             g2d.draw(new Rectangle(selectedRect));
 
         } else if (game.gameState == Game.gameState.Shop){
+            g.setFont(new Font("lilliPut Steps", 1, 35));
             g.setColor(Color.black);
             //Title
             g.fillRect(0,0, game.getWidth(), game.getHeight());
             g.setColor(Color.WHITE);
             g.drawString("Shop", 240, 60);
+            g.setFont(new Font("lilliPut Steps", 1, 25));
             //Coins
-            g.setFont(fntsmall);
-            g.drawString("Coins: " + HUD.coins , 60, 100);
+            //g.setFont(fntsmall);
+            g.drawString("Coins: " + HUD.coins , 75, 100);
             //Bombs
-            g.fillRect(60, 150, 300, 40);
-            g.setColor(Color.black);
-            g.drawString("Bomb - Cost: 5", 80, 180);
+            g.setColor(Color.white);
+            g.drawRect(60, 150, 410, 40);
+            //g.setColor(Color.black);
+            g.drawString("Bomb - Cost: 5 coins", 75, 180);
             //Shield
             g.setColor(Color.white);
-            g.fillRect( 60, 200, 300, 40);
-            g.setColor(Color.black);
-            g.drawString("Shield - Cost: 15", 80, 230);
+            g.drawRect( 60, 200, 465, 40);
+            //g.setColor(Color.black);
+            g.drawString("Shield - Cost: 10 coins", 75, 230);
         }
     }
 

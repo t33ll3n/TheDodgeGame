@@ -1,5 +1,6 @@
 package com.dodgeGame.main;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -64,7 +65,19 @@ public class KeyInput extends KeyAdapter {
         }
 
 
-        else if (key == KeyEvent.VK_ESCAPE) System.exit(0);
+        else if (key == KeyEvent.VK_ESCAPE){
+            if (game.gameState == Game.STATE.Game) {
+                game.gameState = Game.STATE.Pause;
+            }
+            int exitDialog = JOptionPane.YES_NO_OPTION;
+            int exitDialogResult = JOptionPane.showConfirmDialog(null, "Would you really like to exit the game?\n The progress will be lost!", "Warning", exitDialog);
+            if (exitDialogResult == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            } else {
+                if (game.gameState == Game.STATE.Pause)
+                game.gameState = Game.STATE.Game;
+            }
+        }
 
     }
 

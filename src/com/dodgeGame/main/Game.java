@@ -98,7 +98,7 @@ public class Game extends Canvas implements Runnable{
 
     private void tick(){ //Game ticks
         //what happened every tick in the game
-        //gameState = STATE.Shop;
+//        gameState = STATE.Shop;
 
         if (gameState == STATE.Game) {
             handler.tick();
@@ -140,7 +140,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     public static int clamp(int var, int min, int max){
-        //dont allow value go over max or min value
+        //don't allow value go over max or min value
         if (var >= max){
             return max;
         } else if (var <= min){

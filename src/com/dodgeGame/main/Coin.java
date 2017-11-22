@@ -23,7 +23,7 @@ public class Coin extends GameObject {
         g.setColor(Color.YELLOW);
         //g.fillRect(x, y, 16, 16);
         //g.drawImage(tex.item[0], x, y, null);
-        coinRotation.drawAnimation(g, x, y);
+        coinRotation.drawAnimation(g, x, y, 16, 16);
 
     }
 

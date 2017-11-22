@@ -32,6 +32,15 @@ public class Animation {
         }
     }
 
+    public int runAnimationOnce(){
+        index++;
+        if (index > speed){
+            index = 0;
+            return nextFrameOnce();
+        }
+        return 0;
+    }
+
     private void nextFrame(){
         for (int i = 0; i < frames; i++){
             if (count == i){
@@ -44,6 +53,21 @@ public class Animation {
         if (count > frames){
             count = 0;
         }
+    }
+
+    private int nextFrameOnce(){
+        for (int i = 0; i < frames; i++){
+            if (count == i){
+                currentImg = images[i];
+            }
+        }
+
+        count++;
+
+        if (count > frames){
+            return 1;
+        }
+        return 0;
     }
 
     public void drawAnimation(Graphics g, int x, int y){

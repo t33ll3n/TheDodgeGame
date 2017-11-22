@@ -30,7 +30,7 @@ public class Spawner {
         }
 
         //every 500 points new coin appears
-        if (scorePlus % 400 == 0){
+        if (scorePlus % 250 == 0){
             handler.addObject(new Coin(r.nextInt(Game.WIDTH - 50) + 25, r.nextInt(Game.HEIGHT - 50) + 25, ID.Coin, handler));
         }
     }

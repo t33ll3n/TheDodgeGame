@@ -34,13 +34,20 @@ public class Player extends GameObject {
                 if(getBounds().intersects(tmpObject.getBounds())) {
                     //collision code
 
-                    //if so, life goes down
-                    HUD.health -= 1;
-                    if (HUD.health <= 0){
-                        Game.gameState = Game.STATE.End;
+                    //if shield is active, shield gets used
+                    if (HUD.shield > 0){
+                        HUD.shield -= 1;
                     }
-                    time = System.currentTimeMillis();
-                    color = Color.red;
+                    else {
+                       //if shield is not active life goes down
+                        HUD.health -= 1;
+
+                        if (HUD.health <= 0){
+                            Game.gameState = Game.STATE.End;
+                        }
+                        time = System.currentTimeMillis();
+                        color = Color.red;
+                    }
                 } else {
                     if (System.currentTimeMillis() - time > 200) {
                         color = prevColor;
