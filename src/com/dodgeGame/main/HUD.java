@@ -9,8 +9,8 @@ public class HUD {
     public static int shield = 0;
     public static int score = 0;
     public static int level = 1;
-    public static int coins = 0;
-    private static int bombs = 100;
+    public static int coins = 100;
+    private static int bombs = 10000;
 
 
     public void tick(){

@@ -6,6 +6,10 @@ import java.io.IOException;
 
 public class LoadResources {
 
+    public LoadResources(){
+        LoadFonts();
+    }
+
     public void LoadFonts(){
         try {
             // register font to graphics environment

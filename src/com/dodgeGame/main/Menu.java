@@ -32,7 +32,7 @@ public class Menu extends MouseAdapter {
                 //Adds a player to the game
                 handler.addObject(new Player(game.WIDTH/2 - 32, game.HEIGHT/2 - 32, ID.Player, handler, color));
                 for (int i = 0; i < 2; i++) {
-                    //Add to enemies for the start
+                    //Add two enemies for the start
                     handler.addObject(new BasicEnemy(r.nextInt(game.WIDTH - 50) + 25, r.nextInt(game.HEIGHT - 50) + 25, ID.BasicEnemy, handler));
                 }
                 //Add first coin in the game
@@ -49,7 +49,9 @@ public class Menu extends MouseAdapter {
             if (mouseOver(mx, my, 225, 200, 200, 70)){
                 game.gameState = Game.STATE.Game;
 
-                hud.health = 100;
+                //reset HUD values
+                hud.setHealth(100);
+                hud.setShield(0);
                 hud.setScore(0);
                 hud.setLevel(1);
                 handler.addObject(new Player(game.WIDTH/2 - 32, game.HEIGHT/2 - 32, ID.Player, handler, color));
