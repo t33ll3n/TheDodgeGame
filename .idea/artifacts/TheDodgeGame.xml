@@ -1,11 +1,18 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="TheDodgeGame">
+  <artifact type="jar" build-on-make="true" name="TheDodgeGame">
     <output-path>$PROJECT_DIR$/out/artifacts/TheDodgeGame</output-path>
+    <properties id="ant-postprocessing">
+      <options enabled="true" />
+    </properties>
+    <properties id="ant-preprocessing">
+      <options enabled="true" />
+    </properties>
     <root id="archive" name="TheDodgeGame.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="DodgeGame" />
+      <element id="dir-copy" path="$PROJECT_DIR$/out/artifacts/TheDodgeGame/resources" />
     </root>
   </artifact>
 </component>

@@ -36,7 +36,6 @@ public class Game extends Canvas implements Runnable{
 
     public Game(){
         resources = new LoadResources();
-        //resources.LoadFonts();
         sound = new Sound();
         handler = new Handler();
         hud = new HUD();
