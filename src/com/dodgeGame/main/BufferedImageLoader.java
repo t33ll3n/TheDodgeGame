@@ -12,8 +12,8 @@ public class BufferedImageLoader {
     public BufferedImage loadImage(String path){
 
         try {
-            System.out.println(getClass().getResource(path));
-            image = ImageIO.read(getClass().getResource(path));
+            //System.out.println(getClass().getResource(path));
+            image = ImageIO.read(BufferedImageLoader.class.getResource(path));
         } catch (IOException e) {
             e.printStackTrace();
         }

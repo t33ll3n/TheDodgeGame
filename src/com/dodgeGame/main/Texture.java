@@ -7,12 +7,19 @@ public class Texture {
     SpriteSheet ss;
     SpriteSheet bombS;
     SpriteSheet explosionS;
+    SpriteSheet basicEnemyS;
+
+    //array of animation images
     public BufferedImage[] item = new BufferedImage[17];
     public BufferedImage[] bomb = new BufferedImage[4];
     public BufferedImage[] explosion = new BufferedImage[4];
+    public BufferedImage[][] basicEnemy = new BufferedImage[4][2];
+
+    //sprite sheets
     private BufferedImage item_sheet;
     private BufferedImage bomb_sheet;
     private BufferedImage explosion_sheet;
+    private BufferedImage basic_enemy;
 
 
     public Texture(){
@@ -30,6 +37,7 @@ public class Texture {
         ss = new SpriteSheet(item_sheet);
         bombS = new SpriteSheet(bomb_sheet);
         explosionS = new SpriteSheet(explosion_sheet);
+        basicEnemyS = new SpriteSheet(basic_enemy);
 
         getTexture();
     }
@@ -51,6 +59,10 @@ public class Texture {
             explosion[i-1] = explosionS.grabImage(i, 1, 30, 30);
         }
 
+        for (int i = 1; i <= 4; i++){
+            for (int j = 1; j <= 2; j++)
+            basicEnemy[i-1][j-1] = basicEnemyS.grabImage(j, i, 32, 32);
+        }
 
     }
 
