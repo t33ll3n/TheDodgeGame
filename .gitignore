@@ -1,0 +1,8 @@
+.idea/
+META-INF/
+out/
+.classpath
+.project
+src/META-INF/MANIFEST.MF
+DodgeGame.iml
+DodgeGame.xml

@@ -3,6 +3,10 @@ package com.dodgeGame.main;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
+
 
 public class LoadResources {
 
@@ -11,16 +15,15 @@ public class LoadResources {
     }
 
     public void LoadFonts(){
-        try {
-            // register font to graphics environment
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            //System.out.println( "fonts " + this.getClass().getResource("\\fonts\\lilliput_steps.ttf"));
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File((".\\resources\\com\\dodgeGame\\main\\fonts\\lilliput_steps.ttf"))));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch(FontFormatException e) {
-            e.printStackTrace();
-        }
+        // register font to graphics environment
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		System.out.println( "fonts " + getClass().getResource("/fonts/lilliput_steps.ttf"));
+		try {
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/fonts/lilliput_steps.ttf")));
+		} catch (FontFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
+    
 }

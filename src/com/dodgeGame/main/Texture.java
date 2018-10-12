@@ -19,9 +19,9 @@ public class Texture {
 
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
-            item_sheet = loader.loadImage("\\sprites\\item_sheet.png");
-            bomb_sheet = loader.loadImage("\\sprites\\bomba1.png");
-            explosion_sheet = loader.loadImage("\\sprites\\explosion1.png");
+            item_sheet = loader.loadImage("/sprites/item_sheet.png");
+            bomb_sheet = loader.loadImage("/sprites/bomba1.png");
+            explosion_sheet = loader.loadImage("/sprites/explosion1.png");
         } catch (Exception e){
             e.printStackTrace();
             //System.out.println(e.getMessage());

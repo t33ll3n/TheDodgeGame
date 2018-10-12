@@ -14,23 +14,29 @@ public class Sound {
         Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
 
         mixer = AudioSystem.getMixer(mixInfos[0]);
-
-        DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
+        
+        AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
+                44100,
+                16, 2, 4,
+                AudioSystem.NOT_SPECIFIED, true);
+        
+        DataLine.Info dataInfo = new DataLine.Info(Clip.class, format);
         try {
-            clip = (Clip) mixer.getLine(dataInfo);
+            //clip = (Clip) mixer.getLine(dataInfo);
+            clip = AudioSystem.getClip();
         } catch (LineUnavailableException lue) {
             lue.printStackTrace();
         }
 
         try {
             //URL soundURL = Sound.class.getResource("Voice_Over_Under.wav");
-            URL soundURL = this.getClass().getResource("\\sounds\\Voice_Over_Under.wav");
+            URL soundURL = this.getClass().getResource("/sounds/Voice_Over_Under.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
             clip.open(audioStream);
         } catch (LineUnavailableException lue) {
             lue.printStackTrace();
         } catch (UnsupportedAudioFileException uafe) {
-            uafe.printStackTrace();
+        	uafe.printStackTrace();
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

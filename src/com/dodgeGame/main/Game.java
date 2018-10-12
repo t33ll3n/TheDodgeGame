@@ -36,11 +36,10 @@ public class Game extends Canvas implements Runnable{
 
     public Game(){
         resources = new LoadResources();
-        //resources.LoadFonts();
-        sound = new Sound();
         handler = new Handler();
         hud = new HUD();
         tex = new Texture();
+        sound = new Sound();
         this.addKeyListener(new KeyInput(handler, this, hud));
         menu = new Menu(this, handler, hud);
         this.addMouseListener(menu);
