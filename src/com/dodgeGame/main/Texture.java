@@ -29,6 +29,7 @@ public class Texture {
             item_sheet = loader.loadImage("/sprites/item_sheet.png");
             bomb_sheet = loader.loadImage("/sprites/bomba1.png");
             explosion_sheet = loader.loadImage("/sprites/explosion1.png");
+            basic_enemy = loader.loadImage("/sprites/basic_monster.png");
         } catch (Exception e){
             e.printStackTrace();
             //System.out.println(e.getMessage());
@@ -58,7 +59,8 @@ public class Texture {
         for (int i = 1; i <= 4; i++){
             explosion[i-1] = explosionS.grabImage(i, 1, 30, 30);
         }
-
+        
+        //Loads image for basic enemy
         for (int i = 1; i <= 4; i++){
             for (int j = 1; j <= 2; j++)
             basicEnemy[i-1][j-1] = basicEnemyS.grabImage(j, i, 32, 32);
